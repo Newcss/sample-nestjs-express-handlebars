@@ -1,36 +1,106 @@
-# Sample code - NestJS, express-handlebars
+# NestJS + express-handlebars
 
-Part of a personal [list](https://github.com/audiBookning/samples-code-ressource-list) of random samples code
+Пример использования express-handlebars в качестве шаблонизатора в NestJS.
 
-> Quick sample code for using express-handlebars as a template engine in NestJS
+## Стек технологий
 
-## Notes
+- **Runtime**: Node.js (>= 14)
+- **Язык**: TypeScript 4
+- **Фреймворк**: NestJS 7
+- **Шаблонизатор**: express-handlebars 5
+- **Тестирование**: Jest, Supertest
+- **Линтер**: ESLint (с @typescript-eslint)
+- **Форматирование**: Prettier
 
-- Uses Layouts, Partials and Helpers
+## Установка
 
-## Routes
+```bash
+npm install
+```
 
-> Some routes to show different template engine features
+## Запуск
 
-- `http://localhost:3000/` : Basic use.
+### Режим разработки (с hot-reload)
 
-- `http://localhost:3000/name` : How to use a simple helper.
+```bash
+npm run start:dev
+```
 
-- `http://localhost:3000/layout` : How to change the layout used by the engine.
+Приложение будет доступно по адресу http://localhost:3000.
 
-- `http://localhost:3000/array` : How to display an array.
+### Production сборка
 
-## BuyMeACoffee
+```bash
+npm run build
+npm run start:prod
+```
 
-<a href="https://www.buymeacoffee.com/audiobookning" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+### Режим отладки
 
-## Disclaimer
+```bash
+npm run start:debug
+```
 
-This code is not and will never be maintained. It is just some random sample code.
+## Тестирование
 
-Feel free to copy and make any change you like.
+```bash
+# unit-тесты
+npm run test
 
-##
+# unit-тесты в режиме watch
+npm run test:watch
 
-License
+# coverage
+npm run test:cov
+
+# e2e-тесты
+npm run test:e2e
+```
+
+## Линтинг и форматирование
+
+```bash
+# линтинг
+npm run lint
+
+# форматирование
+npm run format
+```
+
+## Маршруты
+
+| Маршрут | Описание |
+|---------|----------|
+| `/` | Базовая страница с приветствием |
+| `/name` | Пример использования helper-функции |
+| `/layout` | Пример смены layout |
+| `/array` | Пример отображения массива |
+
+## Структура проекта
+
+```
+src/
+├── main.ts           # Точка входа, настройка шаблонизатора
+├── app.module.ts     # Корневой модуль
+├── app.controller.ts # Контроллер с маршрутами
+├── app.service.ts    # Сервис
+└── hbs/
+    └── helpers.ts    # Handlebars helpers
+
+views/
+├── layouts/          # Layouts (main, other)
+├── partials/         # Partials (navbar, footer)
+├── index.hbs         # Главная страница
+├── print.hbs         # Страница с helper
+├── array.hbs         # Страница с массивом
+└── alpine/           # Примеры с Alpine.js
+```
+
+## Особенности
+
+- Используются layouts, partials и кастомные helpers express-handlebars
+- Все маршруты в одном контроллере для наглядности
+
+## Лицензия
+
 ISC © 2021 AudiBookning
